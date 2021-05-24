@@ -1,0 +1,221 @@
+<html>
+
+<!--=======================================================================-->
+
+<head>
+  <title>Four in a row</title>
+  <script type='text/javascript' src='http://epilog.stanford.edu/javascript/epilog.js'></script>
+  <script type='text/javascript' src='http://minimal.stanford.edu/worksheets/javascript/worksheets.js'></script>
+</head>
+
+<!--=======================================================================-->
+
+<body leftmargin='0' topmargin='0' marginwidth='0' marginheight='0' bgcolor='#f4f6f8'
+      onload='initialize()'>
+  <center>
+    <table width='640' cellpadding='0' cellspacing='0' border='0'>
+      <tr>
+        <td width='640' height='90' align='center'>
+          <span style='font-size:48px; font-family:Arial, Helvetica, sans-serif; color:crimson;cursor:pointer;width:100%'>Four in a row</span>
+        </td>
+      </tr>
+    </table>
+  </center>
+
+<!--=======================================================================-->
+
+<center>
+  <br/>
+  <span style='font-size:18px;color:#666666;font-family: Arial, Helvetica, sans-serif;'>The first to connect four in a row wins.</span>
+  <table cellspacing='0' border='10' bgcolor='#ffffff' style='cursor:pointer;font-family: Arial, Helvetica, sans-serif;'>
+    <tbody><tr>
+        <td id="mark(1,6)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(2,6)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(3,6)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(4,6)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(5,6)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(6,6)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td id="mark(1,5)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(2,5)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(3,5)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(4,5)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(5,5)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(6,5)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td id="mark(1,4)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(2,4)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(3,4)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(4,4)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(5,4)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(6,4)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td id="mark(1,3)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(2,3)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(3,3)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(4,3)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(5,3)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(6,3)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td id="mark(1,2)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(2,2)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(3,2)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(4,2)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(5,2)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(6,2)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td id="mark(1,1)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(2,1)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(3,1)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(4,1)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(5,1)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(6,1)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+      </tr>
+    </tbody>
+    </table>
+  Player: <span id='control' style='font-size:18px;color:#666666; font-family: Arial, Helvetica, sans-serif;'>blue</span>
+</center>
+
+<br/>
+<br/>
+
+<center>    
+    <table id='rewards' width='300' style='display:none' cellspacing='0' cellpadding='4' border='1'>
+        <caption style="font-family: Arial, Helvetica, sans-serif; color:crimson;">Congratulations! Here are the scores :)</caption>
+        <tr>
+        <td width='50%' align='center' style='font-weight:bold; font-family: Arial, Helvetica, sans-serif; color: dodgerblue;' bgcolor='#dddddd'>Blue</td>
+        <td width='50%' align='center' style='font-weight:bold; font-family: Arial, Helvetica, sans-serif; color: rgb(255, 25, 71);' bgcolor='#dddddd'>Red</td>
+        </tr>
+        <tr>
+        <td id='bluereward' width='50%' align='center' style="font-family: Arial, Helvetica, sans-serif;">0</td>
+        <td id='redreward' width='50%' align='center' style="font-family: Arial, Helvetica, sans-serif;">0</td>
+        </tr>
+    </table>
+    
+</center>
+
+<!--=======================================================================-->
+
+<textarea id='lambda' type='text/hrf' style='display:none'>
+  control(blue)
+
+  cell(1,1,blank)
+  cell(1,2,blank)
+  cell(1,3,blank)
+  cell(1,4,blank)
+  cell(1,5,blank)
+  cell(1,6,blank)
+
+  cell(2,1,blank)
+  cell(2,2,blank)
+  cell(2,3,blank)
+  cell(2,4,blank)
+  cell(2,5,blank)
+  cell(2,6,blank)
+
+  cell(3,1,blank)
+  cell(3,2,blank)
+  cell(3,3,blank)
+  cell(3,4,blank)
+  cell(3,5,blank)
+  cell(3,6,blank)
+
+  cell(4,1,blank)
+  cell(4,2,blank)
+  cell(4,3,blank)
+  cell(4,4,blank)
+  cell(4,5,blank)
+  cell(4,6,blank)
+
+  cell(5,1,blank)
+  cell(5,2,blank)
+  cell(5,3,blank)
+  cell(5,4,blank)
+  cell(5,5,blank)
+  cell(5,6,blank)
+
+  cell(6,1,blank)
+  cell(6,2,blank)
+  cell(6,3,blank)
+  cell(6,4,blank)
+  cell(6,5,blank)
+  cell(6,6,blank)
+</textarea>
+
+<textarea id='library' type='text/hrf' style='display:none'>
+    click(mark(R,C)) :: control(P)  ==> cell(R,C,P) & ~cell(R,C,blank)
+    click(mark(X,Y)) :: control(blue) ==> ~control(blue) & control(red)
+    click(mark(X,Y)) :: control(red) ==> ~control(red) & control(blue)
+
+    goal(blue,100) :- line(blue) & ~line(red)
+    goal(blue,50) :- line(blue) & line(red)
+    goal(blue,50) :- ~line(blue) & ~line(red)
+    goal(blue,0) :- ~line(blue) & line(red)
+    goal(red,100) :- ~line(blue) & line(red)
+    goal(red,50) :- line(blue) & line(red)
+    goal(red,50) :- ~line(blue) & ~line(red)
+    goal(red,0) :- line(blue) & ~line(red)
+
+    terminal :- line(blue)
+    terminal :- line(red)
+    terminal :- ~open
+
+    row(R,X) :- cell(R,1,X) & cell(R,2,X) & cell(R,3,X) & cell(R,4,X)
+    row(R,X) :- cell(R,2,X) & cell(R,3,X) & cell(R,4,X) & cell(R,5,X)
+    row(R,X) :- cell(R,3,X) & cell(R,4,X) & cell(R,5,X) & cell(R,6,X)
+
+    col(C,X) :- cell(1,C,X) & cell(2,C,X) & cell(3,C,X) & cell(4,C,X)
+    col(C,X) :- cell(2,C,X) & cell(3,C,X) & cell(4,C,X) & cell(5,C,X)
+    col(C,X) :- cell(3,C,X) & cell(4,C,X) & cell(5,C,X) & cell(6,C,X)
+
+    diag(X) :- cell(1,1,X) & cell(2,2,X) & cell(3,3,X) & cell(4,4,X)
+    diag(X) :- cell(2,2,X) & cell(3,3,X) & cell(4,4,X) & cell(5,5,X)
+    diag(X) :- cell(3,3,X) & cell(4,4,X) & cell(5,5,X) & cell(6,6,X)
+
+    diag(X) :- cell(2,1,X) & cell(3,2,X) & cell(4,3,X) & cell(5,4,X)
+    diag(X) :- cell(3,2,X) & cell(4,3,X) & cell(5,4,X) & cell(6,5,X)
+    diag(X) :- cell(1,2,X) & cell(2,3,X) & cell(3,4,X) & cell(4,5,X)
+    diag(X) :- cell(2,3,X) & cell(3,4,X) & cell(4,5,X) & cell(5,6,X)
+
+    diag(X) :- cell(3,1,X) & cell(4,2,X) & cell(5,3,X) & cell(6,4,X)
+    diag(X) :- cell(1,3,X) & cell(2,4,X) & cell(3,5,X) & cell(4,6,X)
+
+    line(X) :- row(R,X)
+    line(X) :- col(C,X)
+    line(X) :- diag(X)
+
+    open :- cell(R,C,blank)
+    
+    digit(1)
+    digit(2)
+    digit(3)
+    digit(4)
+    digit(5)
+    digit(6)
+    
+    innerhtml(mark(R,C)," ") :- cell(R,C,blank)
+    innerhtml(mark(R,C),W) :- cell(R,C,W) & distinct(W,blank)
+    innerhtml(mark(R,C),"<img src='https://www.pikpng.com/pngl/b/30-308038_get-a-quote-blue-dot-clipart.png' height='50'>") :- cell(R,C,blue)
+    innerhtml(mark(R,C),"<img src='https://i.dlpng.com/static/png/271857_preview.png' height='50'>") :- cell(R,C,red)
+    innerhtml(control,W) :- control(W)
+    innerhtml(bluereward,C) :- goal(blue,C)
+    innerhtml(redreward,C) :- goal(red,C)
+
+    attribute(mark(R,C),"onclick",true) :- cell(R,C,W) & distinct(W,blank)
+    attribute(mark(R,C),"onclick",true) :- terminal & digit(R) & digit(C)
+
+    style(rewards,"display","") :- terminal
+
+    
+
+</textarea>
+
+<!--=======================================================================-->
+
+</body>
+</html>
