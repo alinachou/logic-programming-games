@@ -1,0 +1,571 @@
+<html>
+
+<!--=======================================================================-->
+
+<head>
+  <title>Reversi</title>
+  <script type='text/javascript' src='http://epilog.stanford.edu/javascript/epilog.js'></script>
+  <script type='text/javascript' src='http://minimal.stanford.edu/worksheets/javascript/worksheets.js'></script>
+</head>
+
+<!--=======================================================================-->
+
+<body leftmargin='0' topmargin='0' marginwidth='0' marginheight='0' bgcolor='#f4f6f8'
+      onload='initialize()'>
+  <center>
+    <table width='640' cellpadding='0' cellspacing='0' border='0'>
+      <tr>
+        <td width='640' height='90' align='center'>
+          <span style='font-size:48px; font-family:Brush Script MT, cursive; font-style: oblique; color:black;width:100%'>Reversi</span>
+        </td>
+      </tr>
+    </table>
+  </center>
+
+<!--=======================================================================-->
+
+<center>
+  <br/>
+  <table cellspacing='0' border='10' bgcolor='#00CC66' style='cursor:pointer;font-family: Arial, Helvetica, sans-serif;'>
+    <tbody>
+      <tr>
+        <td id="mark(1,8)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer; ">&nbsp;</td>
+        <td id="mark(2,8)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(3,8)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(4,8)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(5,8)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(6,8)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(7,8)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;"> </td>
+        <td id="mark(8,8)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td id="mark(1,7)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(2,7)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(3,7)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(4,7)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(5,7)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(6,7)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(7,7)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;"> </td>
+        <td id="mark(8,7)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td id="mark(1,6)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(2,6)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(3,6)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(4,6)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(5,6)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(6,6)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(7,6)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;"> </td>
+        <td id="mark(8,6)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td id="mark(1,5)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(2,5)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(3,5)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(4,5)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(5,5)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(6,5)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(7,5)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(8,5)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td id="mark(1,4)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(2,4)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(3,4)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(4,4)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(5,4)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(6,4)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(7,4)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(8,4)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td id="mark(1,3)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(2,3)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(3,3)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(4,3)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(5,3)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(6,3)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(7,3)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(8,3)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td id="mark(1,2)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(2,2)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(3,2)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(4,2)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(5,2)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(6,2)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(7,2)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(8,2)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td id="mark(1,1)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(2,1)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(3,1)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(4,1)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(5,1)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(6,1)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(7,1)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+        <td id="mark(8,1)" width="60" height="60" align="center" valign="center" onclick="modbutton(this)" style="cursor: pointer;">&nbsp;</td>
+      </tr>
+    </tbody>
+    </table>
+  Player: <span id='control' style='font-size:18px;color:#666666; font-family: Arial, Helvetica, sans-serif;'>white</span>
+</center>
+
+<br/>
+<br/>
+
+<center>
+    <table id='rewards' width='300' style='display:none' cellspacing='0' cellpadding='4' border='1'>
+        <tr>
+        <td width='50%' align='center' style='font-weight:bold; font-family: Arial, Helvetica, sans-serif; color: black;' bgcolor='#dddddd'>White</td>
+        <td width='50%' align='center' style='font-weight:bold; font-family: Arial, Helvetica, sans-serif; color: black;' bgcolor='#dddddd'>Black</td>
+        </tr>
+        <tr>
+        <td id='whitereward' width='50%' align='center' style="font-family: Arial, Helvetica, sans-serif;">0</td>
+        <td id='blackreward' width='50%' align='center' style="font-family: Arial, Helvetica, sans-serif;">0</td>
+        </tr>
+    </table>
+
+</center>
+
+<!--=======================================================================-->
+
+<textarea id='lambda' type='text/hrf' style='display:none'>
+digit(1)
+digit(2)
+digit(3)
+digit(4)
+digit(5)
+digit(6)
+digit(7)
+digit(8)
+control(black)
+north(cell(1,2),cell(1,1))
+north(cell(1,3),cell(1,2))
+north(cell(1,4),cell(1,3))
+north(cell(1,5),cell(1,4))
+north(cell(1,6),cell(1,5))
+north(cell(1,7),cell(1,6))
+north(cell(1,8),cell(1,7))
+north(cell(2,2),cell(2,1))
+north(cell(2,3),cell(2,2))
+north(cell(2,4),cell(2,3))
+north(cell(2,5),cell(2,4))
+north(cell(2,6),cell(2,5))
+north(cell(2,7),cell(2,6))
+north(cell(2,8),cell(2,7))
+north(cell(3,2),cell(3,1))
+north(cell(3,3),cell(3,2))
+north(cell(3,4),cell(3,3))
+north(cell(3,5),cell(3,4))
+north(cell(3,6),cell(3,5))
+north(cell(3,7),cell(3,6))
+north(cell(3,8),cell(3,7))
+north(cell(4,2),cell(4,1))
+north(cell(4,3),cell(4,2))
+north(cell(4,4),cell(4,3))
+north(cell(4,5),cell(4,4))
+north(cell(4,6),cell(4,5))
+north(cell(4,7),cell(4,6))
+north(cell(4,8),cell(4,7))
+north(cell(5,2),cell(5,1))
+north(cell(5,3),cell(5,2))
+north(cell(5,4),cell(5,3))
+north(cell(5,5),cell(5,4))
+north(cell(5,6),cell(5,5))
+north(cell(5,7),cell(5,6))
+north(cell(5,8),cell(5,7))
+north(cell(6,2),cell(6,1))
+north(cell(6,3),cell(6,2))
+north(cell(6,4),cell(6,3))
+north(cell(6,5),cell(6,4))
+north(cell(6,6),cell(6,5))
+north(cell(6,7),cell(6,6))
+north(cell(6,8),cell(6,7))
+north(cell(7,2),cell(7,1))
+north(cell(7,3),cell(7,2))
+north(cell(7,4),cell(7,3))
+north(cell(7,5),cell(7,4))
+north(cell(7,6),cell(7,5))
+north(cell(7,7),cell(7,6))
+north(cell(7,8),cell(7,7))
+north(cell(8,2),cell(8,1))
+north(cell(8,3),cell(8,2))
+north(cell(8,4),cell(8,3))
+north(cell(8,5),cell(8,4))
+north(cell(8,6),cell(8,5))
+north(cell(8,7),cell(8,6))
+north(cell(8,8),cell(8,7))
+east(cell(2,1),cell(1,1))
+east(cell(2,2),cell(1,2))
+east(cell(2,3),cell(1,3))
+east(cell(2,4),cell(1,4))
+east(cell(2,5),cell(1,5))
+east(cell(2,6),cell(1,6))
+east(cell(2,7),cell(1,7))
+east(cell(2,8),cell(1,8))
+east(cell(3,1),cell(2,1))
+east(cell(3,2),cell(2,2))
+east(cell(3,3),cell(2,3))
+east(cell(3,4),cell(2,4))
+east(cell(3,5),cell(2,5))
+east(cell(3,6),cell(2,6))
+east(cell(3,7),cell(2,7))
+east(cell(3,8),cell(2,8))
+east(cell(4,1),cell(3,1))
+east(cell(4,2),cell(3,2))
+east(cell(4,3),cell(3,3))
+east(cell(4,4),cell(3,4))
+east(cell(4,5),cell(3,5))
+east(cell(4,6),cell(3,6))
+east(cell(4,7),cell(3,7))
+east(cell(4,8),cell(3,8))
+east(cell(5,1),cell(4,1))
+east(cell(5,2),cell(4,2))
+east(cell(5,3),cell(4,3))
+east(cell(5,4),cell(4,4))
+east(cell(5,5),cell(4,5))
+east(cell(5,6),cell(4,6))
+east(cell(5,7),cell(4,7))
+east(cell(5,8),cell(4,8))
+east(cell(6,1),cell(5,1))
+east(cell(6,2),cell(5,2))
+east(cell(6,3),cell(5,3))
+east(cell(6,4),cell(5,4))
+east(cell(6,5),cell(5,5))
+east(cell(6,6),cell(5,6))
+east(cell(6,7),cell(5,7))
+east(cell(6,8),cell(5,8))
+east(cell(7,1),cell(6,1))
+east(cell(7,2),cell(6,2))
+east(cell(7,3),cell(6,3))
+east(cell(7,4),cell(6,4))
+east(cell(7,5),cell(6,5))
+east(cell(7,6),cell(6,6))
+east(cell(7,7),cell(6,7))
+east(cell(7,8),cell(6,8))
+east(cell(8,1),cell(7,1))
+east(cell(8,2),cell(7,2))
+east(cell(8,3),cell(7,3))
+east(cell(8,4),cell(7,4))
+east(cell(8,5),cell(7,5))
+east(cell(8,6),cell(7,6))
+east(cell(8,7),cell(7,7))
+east(cell(8,8),cell(7,8))
+northeast(cell(2,2),cell(1,1))
+northeast(cell(2,3),cell(1,2))
+northeast(cell(2,4),cell(1,3))
+northeast(cell(2,5),cell(1,4))
+northeast(cell(2,6),cell(1,5))
+northeast(cell(2,7),cell(1,6))
+northeast(cell(2,8),cell(1,7))
+northeast(cell(3,2),cell(2,1))
+northeast(cell(3,3),cell(2,2))
+northeast(cell(3,4),cell(2,3))
+northeast(cell(3,5),cell(2,4))
+northeast(cell(3,6),cell(2,5))
+northeast(cell(3,7),cell(2,6))
+northeast(cell(3,8),cell(2,7))
+northeast(cell(4,2),cell(3,1))
+northeast(cell(4,3),cell(3,2))
+northeast(cell(4,4),cell(3,3))
+northeast(cell(4,5),cell(3,4))
+northeast(cell(4,6),cell(3,5))
+northeast(cell(4,7),cell(3,6))
+northeast(cell(4,8),cell(3,7))
+northeast(cell(5,2),cell(4,1))
+northeast(cell(5,3),cell(4,2))
+northeast(cell(5,4),cell(4,3))
+northeast(cell(5,5),cell(4,4))
+northeast(cell(5,6),cell(4,5))
+northeast(cell(5,7),cell(4,6))
+northeast(cell(5,8),cell(4,7))
+northeast(cell(6,2),cell(5,1))
+northeast(cell(6,3),cell(5,2))
+northeast(cell(6,4),cell(5,3))
+northeast(cell(6,5),cell(5,4))
+northeast(cell(6,6),cell(5,5))
+northeast(cell(6,7),cell(5,6))
+northeast(cell(6,8),cell(5,7))
+northeast(cell(7,2),cell(6,1))
+northeast(cell(7,3),cell(6,2))
+northeast(cell(7,4),cell(6,3))
+northeast(cell(7,5),cell(6,4))
+northeast(cell(7,6),cell(6,5))
+northeast(cell(7,7),cell(6,6))
+northeast(cell(7,8),cell(6,7))
+northeast(cell(8,2),cell(7,1))
+northeast(cell(8,3),cell(7,2))
+northeast(cell(8,4),cell(7,3))
+northeast(cell(8,5),cell(7,4))
+northeast(cell(8,6),cell(7,5))
+northeast(cell(8,7),cell(7,6))
+northeast(cell(8,8),cell(7,7))
+northwest(cell(1,2),cell(2,1))
+northwest(cell(1,3),cell(2,2))
+northwest(cell(1,4),cell(2,3))
+northwest(cell(1,5),cell(2,4))
+northwest(cell(1,6),cell(2,5))
+northwest(cell(1,7),cell(2,6))
+northwest(cell(1,8),cell(2,7))
+northwest(cell(2,2),cell(3,1))
+northwest(cell(2,3),cell(3,2))
+northwest(cell(2,4),cell(3,3))
+northwest(cell(2,5),cell(3,4))
+northwest(cell(2,6),cell(3,5))
+northwest(cell(2,7),cell(3,6))
+northwest(cell(2,8),cell(3,7))
+northwest(cell(3,2),cell(4,1))
+northwest(cell(3,3),cell(4,2))
+northwest(cell(3,4),cell(4,3))
+northwest(cell(3,5),cell(4,4))
+northwest(cell(3,6),cell(4,5))
+northwest(cell(3,7),cell(4,6))
+northwest(cell(3,8),cell(4,7))
+northwest(cell(4,2),cell(5,1))
+northwest(cell(4,3),cell(5,2))
+northwest(cell(4,4),cell(5,3))
+northwest(cell(4,5),cell(5,4))
+northwest(cell(4,6),cell(5,5))
+northwest(cell(4,7),cell(5,6))
+northwest(cell(4,8),cell(5,7))
+northwest(cell(5,2),cell(6,1))
+northwest(cell(5,3),cell(6,2))
+northwest(cell(5,4),cell(6,3))
+northwest(cell(5,5),cell(6,4))
+northwest(cell(5,6),cell(6,5))
+northwest(cell(5,7),cell(6,6))
+northwest(cell(5,8),cell(6,7))
+northwest(cell(6,2),cell(7,1))
+northwest(cell(6,3),cell(7,2))
+northwest(cell(6,4),cell(7,3))
+northwest(cell(6,5),cell(7,4))
+northwest(cell(6,6),cell(7,5))
+northwest(cell(6,7),cell(7,6))
+northwest(cell(6,8),cell(7,7))
+northwest(cell(7,2),cell(8,1))
+northwest(cell(7,3),cell(8,2))
+northwest(cell(7,4),cell(8,3))
+northwest(cell(7,5),cell(8,4))
+northwest(cell(7,6),cell(8,5))
+northwest(cell(7,7),cell(8,6))
+northwest(cell(7,8),cell(8,7))
+
+  is(cell(1,1), blank)
+  is(cell(1,2), blank)
+  is(cell(1,3), blank)
+  is(cell(1,4), blank)
+  is(cell(1,5), blank)
+  is(cell(1,6), blank)
+  is(cell(1,7), blank)
+  is(cell(1,8), blank)
+
+  is(cell(2,1), blank)
+  is(cell(2,2), blank)
+  is(cell(2,3), blank)
+  is(cell(2,4), blank)
+  is(cell(2,5), blank)
+  is(cell(2,6), blank)
+  is(cell(2,7), blank)
+  is(cell(2,8), blank)
+
+  is(cell(3,1), blank)
+  is(cell(3,2), blank)
+  is(cell(3,3), blank)
+  is(cell(3,4), blank)
+  is(cell(3,5), blank)
+  is(cell(3,6), blank)
+  is(cell(3,7), blank)
+  is(cell(3,8), blank)
+
+  is(cell(4,1), blank)
+  is(cell(4,2), blank)
+  is(cell(4,3), blank)
+  is(cell(4,4), black)
+  is(cell(4,5), white)
+  is(cell(4,6), blank)
+  is(cell(4,7), blank)
+  is(cell(4,8), blank)
+
+  is(cell(5,1), blank)
+  is(cell(5,2), blank)
+  is(cell(5,3), blank)
+  is(cell(5,4), white)
+  is(cell(5,5), black)
+  is(cell(5,6), blank)
+  is(cell(5,7), blank)
+  is(cell(5,8), blank)
+
+  is(cell(6,1), blank)
+  is(cell(6,2), blank)
+  is(cell(6,3), blank)
+  is(cell(6,4), blank)
+  is(cell(6,5), blank)
+  is(cell(6,6), blank)
+  is(cell(6,7), blank)
+  is(cell(6,8), blank)
+
+  is(cell(7,1), blank)
+  is(cell(7,2), blank)
+  is(cell(7,3), blank)
+  is(cell(7,4), blank)
+  is(cell(7,5), blank)
+  is(cell(7,6), blank)
+  is(cell(7,7), blank)
+  is(cell(7,8), blank)
+
+  is(cell(8,1), blank)
+  is(cell(8,2), blank)
+  is(cell(8,3), blank)
+  is(cell(8,4), blank)
+  is(cell(8,5), blank)
+  is(cell(8,6), blank)
+  is(cell(8,7), blank)
+  is(cell(8,8), blank)
+</textarea>
+
+<textarea id='library' type='text/hrf' style='display:none'>
+
+    open :- is(cell(R,C),blank)
+    terminal :- ~open
+    terminal :- evaluate(countofall(X, is(X, black)), 0)
+    terminal :- evaluate(countofall(X, is(X, white)), 0)
+
+    aboveb(X, Y) :- north(X, Y) &  is(Y, black) & north(Y, Z) & is(Z,  white)
+    aboveb(X, Y) :- north(X, Y) &  is(Y, black) & aboveb(Y, Z)
+    aboveb(X, Z) :- north(X, Y) &  is(Y, black) & aboveb(Y, Z)
+
+    abover(X, Y) :- north(X, Y) &  is(Y, white) & north(Y, Z) & is(Z,  black)
+    abover(X, Y) :- north(X, Y) &  is(Y, white) & abover(Y, Z)
+    abover(X, Z) :- north(X, Y) &  is(Y, white) & abover(Y, Z)
+
+    belowb(X, Y) :- north(Y, X) &  is(Y, black) & north(Z, Y) & is(Z,  white)
+    belowb(X, Y) :- north(Y, X) &  is(Y, black) & belowb(Y, Z)
+    belowb(X, Z) :- north(Y, X) &  is(Y, black) & belowb(Y, Z)
+
+    belowr(X, Y) :- north(Y, X) &  is(Y, white) & north(Z, Y) & is(Z,  black)
+    belowr(X, Y) :- north(Y, X) &  is(Y, white) & belowr(Y, Z)
+    belowr(X, Z) :- north(Y, X) &  is(Y, white) & belowr(Y, Z)
+
+    rightb(X, Y) :- east(X, Y) &  is(Y, black) & east(Y, Z) & is(Z,  white)
+    rightb(X, Y) :- east(X, Y) &  is(Y, black) & rightb(Y, Z)
+    rightb(X, Z) :- east(X, Y) &  is(Y, black) & rightb(Y, Z)
+
+    rightr(X, Y) :- east(X, Y) &  is(Y, white) & east(Y, Z) & is(Z,  black)
+    rightr(X, Y) :- east(X, Y) &  is(Y, white) & rightr(Y, Z)
+    rightr(X, Z) :- east(X, Y) &  is(Y, white) & rightr(Y, Z)
+
+    leftb(X, Y) :- east(Y, X) &  is(Y, black) & east(Z, Y) & is(Z,  white)
+    leftb(X, Y) :- east(Y, X) &  is(Y, black) & leftb(Y, Z)
+    leftb(X, Z) :- east(Y, X) &  is(Y, black) & leftb(Y, Z)
+
+    leftr(X, Y) :- east(Y, X) &  is(Y, white) & east(Z, Y) & is(Z,  black)
+    leftr(X, Y) :- east(Y, X) &  is(Y, white) & leftr(Y, Z)
+    leftr(X, Z) :- east(Y, X) &  is(Y, white) & leftr(Y, Z)
+
+    neb(X, Y) :- northeast(X, Y) &  is(Y, black) & northeast(Y, Z) & is(Z,  white)
+    neb(X, Y) :- northeast(X, Y) &  is(Y, black) & neb(Y, Z)
+    neb(X, Z) :- northeast(X, Y) &  is(Y, black) & neb(Y, Z)
+
+    ner(X, Y) :- northeast(X, Y) &  is(Y, white) & northeast(Y, Z) & is(Z,  black)
+    ner(X, Y) :- northeast(X, Y) &  is(Y, white) & ner(Y, Z)
+    ner(X, Z) :- northeast(X, Y) &  is(Y, white) & ner(Y, Z)
+
+    swb(X, Y) :- northeast(Y, X) &  is(Y, black) & northeast(Z, Y) & is(Z,  white)
+    swb(X, Y) :- northeast(Y, X) &  is(Y, black) & swb(Y, Z)
+    swb(X, Z) :- northeast(Y, X) &  is(Y, black) & swb(Y, Z)
+
+    swr(X, Y) :- northeast(Y, X) &  is(Y, white) & northeast(Z, Y) & is(Z,  black)
+    swr(X, Y) :- northeast(Y, X) &  is(Y, white) & swr(Y, Z)
+    swr(X, Z) :- northeast(Y, X) &  is(Y, white) & swr(Y, Z)
+
+    nwb(X, Y) :- northwest(X, Y) &  is(Y, black) & northwest(Y, Z) & is(Z,  white)
+    nwb(X, Y) :- northwest(X, Y) &  is(Y, black) & nwb(Y, Z)
+    nwb(X, Z) :- northwest(X, Y) &  is(Y, black) & nwb(Y, Z)
+
+    nwr(X, Y) :- northwest(X, Y) &  is(Y, white) & northwest(Y, Z) & is(Z,  black)
+    nwr(X, Y) :- northwest(X, Y) &  is(Y, white) & nwr(Y, Z)
+    nwr(X, Z) :- northwest(X, Y) &  is(Y, white) & nwr(Y, Z)
+
+    seb(X, Y) :- northwest(Y, X) &  is(Y, black) & northwest(Z, Y) & is(Z,  white)
+    seb(X, Y) :- northwest(Y, X) &  is(Y, black) & seb(Y, Z)
+    seb(X, Z) :- northwest(Y, X) &  is(Y, black) & seb(Y, Z)
+
+    ser(X, Y) :- northwest(Y, X) &  is(Y, white) & northwest(Z, Y) & is(Z,  black)
+    ser(X, Y) :- northwest(Y, X) &  is(Y, white) & ser(Y, Z)
+    ser(X, Z) :- northwest(Y, X) &  is(Y, white) & ser(Y, Z)
+
+    legal(X, W) :- is(X, blank) & same(W, white) & or(aboveb(X, Y), belowb(X, Y), rightb(X, Y), leftb(X, Y),
+                                   neb(X, Y), nwb(X, Y), seb(X, Y), swb(X, Y))
+
+    legal(X, B) :- is(X, blank) & same(B, black) & or(abover(X, Y), belowr(X, Y), rightr(X, Y), leftr(X, Y),
+                                   ner(X, Y), nwr(X, Y), ser(X, Y), swr(X, Y))
+    
+
+    click(mark(R,C)) :: control(P) & legal(cell(R, C), P) ==> is(cell(R,C), P) & ~is(cell(R,C), blank)
+    click(mark(R,C)) :: control(P) & evaluate(countofall(X, legal(X, P)), 0) & legal(cell(R, C), Q) ==> ~control(P) & control(Q) & is(cell(R,C), Q) & ~is(cell(R,C), blank)
+
+    click(mark(R,C)) :: control(white) & aboveb(cell(R, C), X) ==>  is(X, white) & ~is(X, black) &
+                       ~control(white) & control(black)
+    click(mark(R,C)) :: control(black) & abover(cell(R, C), X) ==>  is(X, black) & ~is(X, white) &
+                       ~control(black) & control(white)
+
+    click(mark(R,C)) :: control(white) & belowb(cell(R, C), X) ==>  is(X, white) & ~is(X, black) &
+                       ~control(white) & control(black)
+    click(mark(R,C)) :: control(black) & belowr(cell(R, C), X) ==>  is(X, black) & ~is(X, white) &
+                       ~control(black) & control(white)
+
+    click(mark(R,C)) :: control(white) & rightb(cell(R, C), X) ==>  is(X, white) & ~is(X, black) &
+                       ~control(white) & control(black)
+    click(mark(R,C)) :: control(black) & rightr(cell(R, C), X) ==>  is(X, black) & ~is(X, white) &
+                       ~control(black) & control(white)
+
+    click(mark(R,C)) :: control(white) & leftb(cell(R, C), X) ==>  is(X, white) & ~is(X, black) &
+                       ~control(white) & control(black)
+    click(mark(R,C)) :: control(black) & leftr(cell(R, C), X) ==>  is(X, black) & ~is(X, white) &
+                       ~control(black) & control(white)
+
+    click(mark(R,C)) :: control(white) & neb(cell(R, C), X) ==>  is(X, white) & ~is(X, black) &
+                       ~control(white) & control(black)
+    click(mark(R,C)) :: control(black) & ner(cell(R, C), X) ==>  is(X, black) & ~is(X, white) &
+                       ~control(black) & control(white)
+
+    click(mark(R,C)) :: control(white) & nwb(cell(R, C), X) ==>  is(X, white) & ~is(X, black) &
+                       ~control(white) & control(black)
+    click(mark(R,C)) :: control(black) & nwr(cell(R, C), X) ==>  is(X, black) & ~is(X, white) &
+                       ~control(black) & control(white)
+
+    click(mark(R,C)) :: control(white) & seb(cell(R, C), X) ==>  is(X, white) & ~is(X, black) &
+                       ~control(white) & control(black)
+    click(mark(R,C)) :: control(black) & ser(cell(R, C), X) ==>  is(X, black) & ~is(X, white) &
+                       ~control(black) & control(white)
+
+    click(mark(R,C)) :: control(white) & swb(cell(R, C), X) ==>  is(X, white) & ~is(X, black) &
+                       ~control(white) & control(black)
+    click(mark(R,C)) :: control(black) & swr(cell(R, C), X) ==>  is(X, black) & ~is(X, white) &
+                       ~control(black) & control(white)
+
+    goal(white, S) :- evaluate(countofall(X, is(X, white)), S)
+    goal(black,  S) :- evaluate(countofall(X, is(X, black)), S)
+
+    innerhtml(mark(R,C)," ") :- is(cell(R,C), blank)
+    innerhtml(mark(R,C),"<img src='https://hotemoji.com/images/dl/3/medium-white-circle-emoji-by-twitter.png' height='50'>") :- is(cell(R,C), white)
+    innerhtml(mark(R,C),"<img src='https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/281/black-circle_26ab.png' height='50'>") :- is(cell(R,C), black)
+    innerhtml(mark(R,C),"<img src='https://images.squarespace-cdn.com/content/v1/53be182be4b0a5397e8a0701/1423796454998-7Y2X5RNI0SA34ZTHYR72/ke17ZwdGBToddI8pDm48kI570uqDpbS6UjUEgiRvUGZZw-zPPgdn4jUwVcJE1ZvWhcwhEtWJXoshNdA9f1qD7Xjs1RQ2trjUGUXrwm_8lmhp2cSyOCu4sdUmbVZ4Qx6rVAhVdhZvtuZuUSHsbBtyAw/graycircle.png' height='10'>") :- control(P) & legal(cell(R, C), P)
+    innerhtml(control,W) :- control(W)
+    innerhtml(whitereward,C) :- goal(white, C)
+    innerhtml(blackreward,C) :- goal(black, C)
+
+    attribute(mark(R,C),"onclick",true) :- is(cell(R,C), W) & mutex(W, blank)
+    attribute(mark(R,C),"onclick",true) :- terminal
+    style(rewards,"display","") :- terminal
+
+
+</textarea>
+
+<!--=======================================================================-->
+
+</body>
+</html>
