@@ -1,0 +1,19 @@
+
+
+<body leftmargin='0' topmargin='0' marginwidth='0' marginheight='0' bgcolor='#f4f6f8' onload='initialize()'>
+  <center>
+    <table width='640' cellpadding='0' cellspacing='0' border='0'>
+      <tr>
+        <td width='640' height='90' align='center'>
+          <span style='font-size:48px; font-family:Brush Script MT, cursive; font-style: oblique; color:black;width:100%'>Reversi</span>
+        </td>
+      </tr>
+    </table>
+  </center>
+
+<!--=======================================================================-->
+
+<center>
+  <br/>
+  <table cellspacing='0' border='10' bgcolor='#00CC66' style='cursor:pointer;font-family: Arial, Helvetica, sans-serif;'>
+    <tbody>
