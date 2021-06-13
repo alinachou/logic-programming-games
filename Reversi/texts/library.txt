@@ -1,0 +1,131 @@
+<textarea id='library' type='text/hrf' style='display:none'>
+
+    open :- is(cell(R,C),blank)
+    terminal :- ~open
+    terminal :- evaluate(countofall(X, is(X, black)), 0)
+    terminal :- evaluate(countofall(X, is(X, white)), 0)
+
+    abovew(X, Y) :- control(white) & north(X, Y) &  is(Y, black) & north(Y, Z) & is(Z,  white)
+    abovew(X, Y) :- control(white) & north(X, Y) &  is(Y, black) & abovew(Y, Z)
+    abovew(X, Z) :- control(white) & north(X, Y) &  is(Y, black) & abovew(Y, Z)
+
+    aboveb(X, Y) :- control(black) & north(X, Y) &  is(Y, white) & north(Y, Z) & is(Z,  black)
+    aboveb(X, Y) :- control(black) & north(X, Y) &  is(Y, white) & aboveb(Y, Z)
+    aboveb(X, Z) :- control(black) & north(X, Y) &  is(Y, white) & aboveb(Y, Z)
+
+    beloww(X, Y) :- control(white) & north(Y, X) &  is(Y, black) & north(Z, Y) & is(Z,  white)
+    beloww(X, Y) :- control(white) & north(Y, X) &  is(Y, black) & beloww(Y, Z)
+    beloww(X, Z) :- control(white) & north(Y, X) &  is(Y, black) & beloww(Y, Z)
+
+    belowb(X, Y) :- control(black) & north(Y, X) &  is(Y, white) & north(Z, Y) & is(Z,  black)
+    belowb(X, Y) :- control(black) & north(Y, X) &  is(Y, white) & belowb(Y, Z)
+    belowb(X, Z) :- control(black) & north(Y, X) &  is(Y, white) & belowb(Y, Z)
+
+    rightw(X, Y) :- control(white) & east(X, Y) &  is(Y, black) & east(Y, Z) & is(Z,  white)
+    rightw(X, Y) :- control(white) & east(X, Y) &  is(Y, black) & rightw(Y, Z)
+    rightw(X, Z) :- control(white) & east(X, Y) &  is(Y, black) & rightw(Y, Z)
+
+    rightb(X, Y) :- control(black) & east(X, Y) &  is(Y, white) & east(Y, Z) & is(Z,  black)
+    rightb(X, Y) :- control(black) & east(X, Y) &  is(Y, white) & rightb(Y, Z)
+    rightb(X, Z) :- control(black) & east(X, Y) &  is(Y, white) & rightb(Y, Z)
+
+    leftw(X, Y) :- control(white) & east(Y, X) &  is(Y, black) & east(Z, Y) & is(Z,  white)
+    leftw(X, Y) :- control(white) & east(Y, X) &  is(Y, black) & leftw(Y, Z)
+    leftw(X, Z) :- control(white) & east(Y, X) &  is(Y, black) & leftw(Y, Z)
+
+    leftb(X, Y) :- control(black) & east(Y, X) &  is(Y, white) & east(Z, Y) & is(Z,  black)
+    leftb(X, Y) :- control(black) & east(Y, X) &  is(Y, white) & leftb(Y, Z)
+    leftb(X, Z) :- control(black) & east(Y, X) &  is(Y, white) & leftb(Y, Z)
+
+    new(X, Y) :- control(white) & northeast(X, Y) &  is(Y, black) & northeast(Y, Z) & is(Z,  white)
+    new(X, Y) :- control(white) & northeast(X, Y) &  is(Y, black) & new(Y, Z)
+    new(X, Z) :- control(white) & northeast(X, Y) &  is(Y, black) & new(Y, Z)
+
+    neb(X, Y) :- control(black) & northeast(X, Y) &  is(Y, white) & northeast(Y, Z) & is(Z,  black)
+    neb(X, Y) :- control(black) & northeast(X, Y) &  is(Y, white) & neb(Y, Z)
+    neb(X, Z) :- control(black) & northeast(X, Y) &  is(Y, white) & neb(Y, Z)
+
+    sww(X, Y) :- control(white) & northeast(Y, X) &  is(Y, black) & northeast(Z, Y) & is(Z,  white)
+    sww(X, Y) :- control(white) & northeast(Y, X) &  is(Y, black) & sww(Y, Z)
+    sww(X, Z) :- control(white) & northeast(Y, X) &  is(Y, black) & sww(Y, Z)
+
+    swb(X, Y) :- control(black) & northeast(Y, X) &  is(Y, white) & northeast(Z, Y) & is(Z,  black)
+    swb(X, Y) :- control(black) & northeast(Y, X) &  is(Y, white) & swb(Y, Z)
+    swb(X, Z) :- control(black) & northeast(Y, X) &  is(Y, white) & swb(Y, Z)
+
+    nww(X, Y) :- control(white) & northwest(X, Y) &  is(Y, black) & northwest(Y, Z) & is(Z,  white)
+    nww(X, Y) :- control(white) & northwest(X, Y) &  is(Y, black) & nww(Y, Z)
+    nww(X, Z) :- control(white) & northwest(X, Y) &  is(Y, black) & nww(Y, Z)
+
+    nwb(X, Y) :- control(black) & northwest(X, Y) &  is(Y, white) & northwest(Y, Z) & is(Z,  black)
+    nwb(X, Y) :- control(black) & northwest(X, Y) &  is(Y, white) & nwb(Y, Z)
+    nwb(X, Z) :- control(black) & northwest(X, Y) &  is(Y, white) & nwb(Y, Z)
+
+    sew(X, Y) :- control(white) & northwest(Y, X) &  is(Y, black) & northwest(Z, Y) & is(Z,  white)
+    sew(X, Y) :- control(white) & northwest(Y, X) &  is(Y, black) & sew(Y, Z)
+    sew(X, Z) :- control(white) & northwest(Y, X) &  is(Y, black) & sew(Y, Z)
+
+    seb(X, Y) :- control(black) & northwest(Y, X) &  is(Y, white) & northwest(Z, Y) & is(Z,  black)
+    seb(X, Y) :- control(black) & northwest(Y, X) &  is(Y, white) & seb(Y, Z)
+    seb(X, Z) :- control(black) & northwest(Y, X) &  is(Y, white) & seb(Y, Z)
+
+    legal(X, W) :- is(X, blank) & same(W, white) & or(abovew(X, Y), beloww(X, Y), rightw(X, Y), leftw(X, Y),
+                                   new(X, Y), nww(X, Y), sew(X, Y), sww(X, Y))
+
+    legal(X, B) :- is(X, blank) & same(B, black) & or(aboveb(X, Y), belowb(X, Y), rightb(X, Y), leftb(X, Y),
+                                   neb(X, Y), nwb(X, Y), seb(X, Y), swb(X, Y))
+
+
+    randomwhite(M) :- evaluate(choose(mark(X, Y), legal(cell(X, Y), white)), M)
+    tick :: control(white) & randomwhite(M) ==> click(M)
+
+
+    switch(X) :: is(X, white) ==> ~is(X, white) & is(X, black)
+    switch(X) :: is(X, black) ==> ~is(X, black) & is(X, white)
+
+    click(mark(R,C)) :: control(P) & legal(cell(R, C), P) ==> is(cell(R,C), P) & ~is(cell(R,C), blank)
+
+    click(mark(R,C)) :: abovew(cell(R, C), X) ==>  switch(X)
+    click(mark(R,C)) :: abover(cell(R, C), X) ==>  switch(X)
+
+    click(mark(R,C)) :: beloww(cell(R, C), X) ==>  switch(X)
+    click(mark(R,C)) :: belowr(cell(R, C), X) ==>  switch(X)
+
+    click(mark(R,C)) :: rightw(cell(R, C), X) ==>  switch(X)
+    click(mark(R,C)) :: rightr(cell(R, C), X) ==>  switch(X)
+
+    click(mark(R,C)) :: leftw(cell(R, C), X) ==>  switch(X)
+    click(mark(R,C)) :: leftr(cell(R, C), X) ==>  switch(X)
+
+    click(mark(R,C)) :: new(cell(R, C), X) ==>  switch(X)
+    click(mark(R,C)) :: ner(cell(R, C), X) ==>  switch(X)
+
+    click(mark(R,C)) :: nww(cell(R, C), X) ==>  switch(X)
+    click(mark(R,C)) :: nwr(cell(R, C), X) ==>  switch(X)
+
+    click(mark(R,C)) :: sew(cell(R, C), X) ==>  switch(X)
+    click(mark(R,C)) :: ser(cell(R, C), X) ==>  switch(X)
+
+    click(mark(R,C)) :: sww(cell(R, C), X) ==>  switch(X)
+    click(mark(R,C)) :: swr(cell(R, C), X) ==>  switch(X)
+
+    click(mark(R,C)) :: control(white) ==> ~control(white) & control(black)
+    click(mark(R,C)) :: control(black) ==> ~control(black) & control(white)
+
+
+    goal(white, S) :- evaluate(countofall(X, is(X, white)), S)
+    goal(black,  S) :- evaluate(countofall(X, is(X, black)), S)
+
+    innerhtml(mark(R,C)," ") :- is(cell(R,C), blank)
+    innerhtml(mark(R,C),"<img src='https://hotemoji.com/images/dl/3/medium-white-circle-emoji-by-twitter.png' height='50'>") :- is(cell(R,C), white)
+    innerhtml(mark(R,C),"<img src='https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/281/black-circle_26ab.png' height='50'>") :- is(cell(R,C), black)
+    innerhtml(mark(R,C),"<img src='https://images.squarespace-cdn.com/content/v1/53be182be4b0a5397e8a0701/1423796454998-7Y2X5RNI0SA34ZTHYR72/ke17ZwdGBToddI8pDm48kI570uqDpbS6UjUEgiRvUGZZw-zPPgdn4jUwVcJE1ZvWhcwhEtWJXoshNdA9f1qD7Xjs1RQ2trjUGUXrwm_8lmhp2cSyOCu4sdUmbVZ4Qx6rVAhVdhZvtuZuUSHsbBtyAw/graycircle.png' height='10'>") :- control(P) & legal(cell(R, C), P)
+    innerhtml(control,W) :- control(W)
+    innerhtml(whitereward,C) :- goal(white, C)
+    innerhtml(blackreward,C) :- goal(black, C)
+
+    attribute(mark(R,C),"onclick",true) :- is(cell(R,C), W) & distinct(W, blank)
+    attribute(mark(R,C),"onclick",true) :- terminal
+    style(rewards,"display","") :- terminal
+
+</textarea>
