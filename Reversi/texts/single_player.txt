@@ -1,0 +1,9 @@
+<center>
+  <br/>
+  <input id='stepper' type='button' value='Step' onclick='dostep()'/>
+  <input id='player' type='button' value='Play' onclick='doplay()'/>
+  <input id='pauser' type='button' value='Pause' onclick='dopause()' disabled='true'/>
+  <br/>
+</center>
+
+<!--=======================================================================-->
