@@ -1,0 +1,15 @@
+<html>
+
+<!--=======================================================================-->
+
+<head>
+  <title>Reversi</title>
+  <script type='text/javascript' src='http://epilog.stanford.edu/javascript/epilog.js'></script>
+  <script type='text/javascript' src='http://minimal.stanford.edu/worksheets/javascript/worksheets.js'></script>
+</head>
+
+<audio controls autoplay="true">
+  <source src="bgmusic1.mp3" type="audio/mpeg">
+</audio>
+
+<!--=======================================================================-->
