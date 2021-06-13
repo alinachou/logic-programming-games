@@ -1,0 +1,22 @@
+</tbody>
+    </table>
+  Player: <span id='control' style='font-size:18px;color:#666666; font-family: Arial, Helvetica, sans-serif;'>white</span>
+</center>
+
+
+<br/>
+<br/>
+
+<center>
+    <table id='rewards' width='300' style='display:none' cellspacing='0' cellpadding='4' border='1'>
+        <tr>
+        <td width='50%' align='center' style='font-weight:bold; font-family: Arial, Helvetica, sans-serif; color: black;' bgcolor='#dddddd'>White</td>
+        <td width='50%' align='center' style='font-weight:bold; font-family: Arial, Helvetica, sans-serif; color: black;' bgcolor='#dddddd'>Black</td>
+        </tr>
+        <tr>
+        <td id='whitereward' width='50%' align='center' style="font-family: Arial, Helvetica, sans-serif;">0</td>
+        <td id='blackreward' width='50%' align='center' style="font-family: Arial, Helvetica, sans-serif;">0</td>
+        </tr>
+    </table>
+</center>
+
